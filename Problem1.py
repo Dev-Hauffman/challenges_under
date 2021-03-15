@@ -1,6 +1,7 @@
+#receive a timestamp and converts from 12 hours format into 24 hours format
 def convert_time(time):
-    hour = time[0] + time[1]
-    if time[8] == 'A':
+    hour = time[0] + time[1] #retrieves the hours from the timestamp as it's the "only" thing that changes from one format to the other
+    if time[8] == 'A': #identify if it's morning by searching the letter 'A' in 'AM'
         if hour == '12':
             final_time = "00"+(time[2:8])
         else:
@@ -8,11 +9,8 @@ def convert_time(time):
     else:
         if hour == '12':
             final_time = time[:8]
-        elif hour[0] == '1':
-            hour_converted = int(hour)+12
-            final_time = str(hour_converted)+(time[2:8])
         else:
-            hour_converted = int(time[1])+12
+            hour_converted = int(hour)+12 #treating case from 1PM to 11PM
             final_time = str(hour_converted)+(time[2:8])
     return final_time
     
